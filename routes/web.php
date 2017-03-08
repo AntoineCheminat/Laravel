@@ -15,11 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::post('write', 'HomeController@write');
+Route::post('write','HomeController@write');
 
-/*
- * AUTHENTIFICATION
- */
 
 Auth::routes();
 

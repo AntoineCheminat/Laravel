@@ -178,9 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * Service Provide -- Added manually
+         * Application Service Providers - manually added...
          */
-
         Collective\Html\HtmlServiceProvider::class,
         Reliese\Coders\CodersServiceProvider::class,
 
@@ -234,11 +233,11 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         /*
-         * Alias -- Manual
+         * Aliases - manually added
          */
-
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
     ],
 
 ];
