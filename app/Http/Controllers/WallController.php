@@ -6,13 +6,11 @@ use Illuminate\Http\Request;
 
 class WallController extends Controller
 {
-    public function read($search = false)
-    {
+    public function read($search = false) {
         return view('read', ['search' => $search]);
     }
 
-    public function write()
-    {
-        return "Soon ...";
+    public function write() {
+        return "Soon...";
     }
 }

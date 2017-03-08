@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 08 Mar 2017 09:29:20 +0000.
+ * Date: Wed, 08 Mar 2017 09:27:49 +0000.
  */
 
 namespace App\Models;
@@ -32,8 +32,7 @@ class Post extends Eloquent
 		'author'
 	];
 
-	public function user()
-    {
-        return $this->belongsTo(User::class, 'author');
+	public function user() {
+	    return $this->belongsTo(User::class, 'author');
     }
 }
