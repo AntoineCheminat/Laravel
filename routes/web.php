@@ -13,17 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('hello', function () {
-    return "Hello world !";
-});
-
-Route::get('page/{page_name?}', function ($page_name = 'Home') {
-    return view('read', ['page_name' => $page_name]);
-});
-
-Route::get('read/{search?}', 'WallController@read');
+})->name('welcome');
 
 Route::post('write', 'HomeController@write');
 
