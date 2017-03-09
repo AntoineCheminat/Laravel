@@ -10,25 +10,29 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class PasswordReset
+ * Class User
  * 
+ * @property int $id
+ * @property string $name
  * @property string $email
- * @property string $token
+ * @property string $password
+ * @property string $remember_token
  * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models
  */
-class PasswordReset extends Eloquent
+class User extends Eloquent
 {
-	public $incrementing = false;
-	public $timestamps = false;
-
 	protected $hidden = [
-		'token'
+		'password',
+		'remember_token'
 	];
 
 	protected $fillable = [
+		'name',
 		'email',
-		'token'
+		'password',
+		'remember_token'
 	];
 }
