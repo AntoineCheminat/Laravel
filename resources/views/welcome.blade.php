@@ -66,6 +66,18 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            <div class="">
+                @if (Auth::check())
+                    {!! Form::open(['method'=>'GET','url'=>'search','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                @endif
+            </div>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())

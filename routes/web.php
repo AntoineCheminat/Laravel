@@ -11,16 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+//Route::get('/', function () {
+//    return redirect()->route('home');
+//})->name('welcome');
 
-Route::post('write', 'HomeController@write');
+Route::get('/', 'HomeController@index')->name('home');
 
-/*
- * AUTHENTIFICATION
- */
+Route::post('write','HomeController@write');
+
+Route::get('/thread/{id?}', 'ThreadController@index')->name('thread');
+
+Route::get('create', 'ThreadController@create');
+
+Route::post('createThread', 'ThreadController@createThread');
+
+Route::post('createComment', 'ThreadController@createComment');
 
 Auth::routes();
 
-Route::get('/home/{search?}', 'HomeController@index')->name('home');

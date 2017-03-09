@@ -10,28 +10,29 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Post
+ * Class User
  * 
  * @property int $id
- * @property string $post_content
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property int $author
  *
  * @package App\Models
  */
-class Post extends Eloquent
+class User extends Eloquent
 {
-	protected $casts = [
-		'author' => 'int'
+	protected $hidden = [
+		'password',
+		'remember_token'
 	];
 
 	protected $fillable = [
-		'post_content',
-		'author'
+		'name',
+		'email',
+		'password',
+		'remember_token'
 	];
-
-    public function user() {
-        return $this->belongsTo(User::class, 'author');
-    }
 }

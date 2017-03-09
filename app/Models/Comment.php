@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 09 Mar 2017 09:31:13 +0000.
+ * Date: Thu, 09 Mar 2017 14:07:09 +0100.
  */
 
 namespace App\Models;
@@ -10,28 +10,32 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Post
+ * Class Comment
  * 
  * @property int $id
- * @property string $post_content
+ * @property string $content
+ * @property int $author
+ * @property int $thread
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property int $author
  *
  * @package App\Models
  */
-class Post extends Eloquent
+class Comment extends Eloquent
 {
 	protected $casts = [
-		'author' => 'int'
+		'author' => 'int',
+		'thread' => 'int'
 	];
 
 	protected $fillable = [
-		'post_content',
-		'author'
+		'content',
+		'author',
+		'thread'
 	];
 
     public function user() {
         return $this->belongsTo(User::class, 'author');
     }
+
 }

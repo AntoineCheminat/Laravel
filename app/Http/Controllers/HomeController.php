@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Thread;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -26,21 +28,18 @@ class HomeController extends Controller
      */
     public function index($search = false)
     {
-        //$posts = Post::all();
+        Carbon::setLocale('fr');
         $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('home', ['search' => $search, 'posts' => $posts]);
+        $threads = Thread::orderBy('updated_at', 'desc')->get();
+        return view('home', ['search' => $search, 'posts' => $posts, 'threads' => $threads]);
     }
 
-    public function write(Request $request)
-    {
-        $post = new Post();
+    public function write(Request $request) {
+        $post = new Post;
         $post->post_content = $request->post_content;
         $post->author = Auth::id();
-
         $post->save();
-
-        Session::flash('alert-success', 'Post saved successfully');
-
+        Session::flash('alert-success', 'Post saved successfully!');
         return redirect('home');
     }
 }
