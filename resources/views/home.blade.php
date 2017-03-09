@@ -3,39 +3,41 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">The Wall</div>
+                <div class="panel-heading">Discussions</div>
 
                 <div class="panel-body">
-                    You are logged in!
-                </div>
-                <div>
-                    {!! Form::open(['url' => 'write']) !!}
-                        {!! Form::text('post_content') !!}
-                        {!! Form::submit('Write on the wall !') !!}
-                    {!! Form::close() !!}
+                    <a href="{{ url('create') }}" class="btn btn-info pull-right">
+                        Créer sujet
+                    </a>
                 </div>
 
-                <div>
-                    @if($search === false)
-                        All posts :
-                    @else
-                        All posts containing "{{ $search }}" :
-                    @endif
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Dernier message</th>
+                        </tr>
+
+                            @foreach($threads as $thread)
+                            <tr>
+                                <td>
+                                    <a href="{{ url('thread', ['id' => $thread->id]) }}">{{ $thread->title }}</a>
+                                </td>
+                                <td>
+                                    <b>{{ $thread->user->name }}</b>
+                                </td>
+                                <td>
+                                    {{ $thread->updated_at->diffForHumans() }}
+                                </td>
+                            </tr>
+                            @endforeach
+
+                    </table>
                 </div>
 
-                <div>
-                    @foreach($posts as $post)
-                        <b>{{ $post->user->name }}</b> wrote {{ $post->created_at->diffForHumans() }} :<br>
-                        {{ $post->post_content }}
-                        <hr><br>
-                    @endforeach
-                </div>
-
-                <div class="links">
-                    <a href="/">Get back to homepage</a>
-                </div>
             </div>
         </div>
     </div>

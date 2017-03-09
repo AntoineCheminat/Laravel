@@ -83,7 +83,7 @@
         </div>
 
         <div class="links">
-            <a href="{{ url('home') }}">Get back to homepage</a>
+            <a href="{{ url('/') }}">Get back to homepage</a>
         </div>
     </div>
 </div>

@@ -43,7 +43,16 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if (Auth::check())
+                            {!! Form::open(['method'=>'GET','url'=>'search','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+                            <div class="input-group">
+                                {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Recherche']) !!}
+                                <div class="input-group-btn">
+                                    {!! Form::button('<i class="glyphicon glyphicon-search"></i>', array('class' => 'btn btn-default', 'type' => 'submit')) !!}
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
