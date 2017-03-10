@@ -8,7 +8,7 @@
                     <div class="panel-heading">Créer un sujet</div>
 
                     <div class="panel-body">
-                        {!! Form::open(['url' => 'createThread', 'class' => 'form-horizontal']) !!}
+                        {!! Form::open(['url' => 'createThreadModify', 'class' => 'form-horizontal']) !!}
                         <div class="form-group col-md-12">
                             {!! Form::label('title', 'Titre :') !!}
                             {!! Form::text('title',null, ['class' => 'form-control', 'maxlength' => 100]) !!}

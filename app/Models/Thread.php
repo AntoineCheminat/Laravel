@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
+use Laravel\Scout\Searchable;
 
 /**
  * Class Thread
@@ -23,6 +24,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Thread extends Eloquent
 {
+    use Searchable;
+
 	protected $casts = [
 		'author' => 'int'
 	];
@@ -36,4 +39,5 @@ class Thread extends Eloquent
     public function user() {
         return $this->belongsTo(User::class, 'author');
     }
+
 }
