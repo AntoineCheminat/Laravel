@@ -38,4 +38,8 @@ class Comment extends Eloquent
         return $this->belongsTo(User::class, 'author');
     }
 
+    public function threadId() {
+        return $this->belongsTo(Thread::class, 'thread');
+    }
+
 }

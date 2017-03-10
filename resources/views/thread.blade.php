@@ -6,8 +6,8 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <b>{{ $thread->title }}</b> posté par {{ $thread->user->name }}
-                        <div class="pull-right"><i>{{ $thread->created_at->diffForHumans() }}</i></div>
+                        <b>{{ $thread->title }}</b> posté par <b>{{ $thread->user->name }}</b>
+                        <div class="pull-right"><i>{{ $thread->updated_at->diffForHumans() }}</i></div>
                     </div>
 
                     <div class="panel-body">
@@ -29,6 +29,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="text-center">
+                    {{ $comments->links() }}
+                </div>
 
                 <div class="col-md-12">
                     {!! Form::open(['url' => 'createComment', 'class' => 'form-horizontal']) !!}

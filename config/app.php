@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -183,6 +183,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Reliese\Coders\CodersServiceProvider::class,
         TomLingham\Searchy\SearchyServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
     ],
 

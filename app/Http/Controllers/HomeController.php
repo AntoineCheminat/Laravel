@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Thread;
 use Carbon\Carbon;
@@ -29,17 +30,12 @@ class HomeController extends Controller
     public function index($search = false)
     {
         Carbon::setLocale('fr');
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        $threads = Thread::orderBy('updated_at', 'desc')->get();
-        return view('home', ['search' => $search, 'posts' => $posts, 'threads' => $threads]);
+        $threads = Thread::orderBy('updated_at', 'desc')->paginate(10);
+        $commentsNb = array();
+        foreach ($threads as $thread) {
+            $commentsNb[$thread->id] = Comment::where('thread', $thread->id)->count();
+        }
+        return view('home', ['search' => $search, 'threads' => $threads, 'commentsNb' => $commentsNb]);
     }
 
-    public function write(Request $request) {
-        $post = new Post;
-        $post->post_content = $request->post_content;
-        $post->author = Auth::id();
-        $post->save();
-        Session::flash('alert-success', 'Post saved successfully!');
-        return redirect('home');
-    }
 }
